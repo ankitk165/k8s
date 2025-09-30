@@ -1,0 +1,26 @@
+1. setup in docker-desktop
+for other refer repo : https://github.com/ankitk165/kube-starter-twshubham/tree/main/kubestarter-main
+
+2. k8s dashboard
+
+a. using helm , install helm using choco in windows, commands in linux
+
+# Add kubernetes-dashboard repository
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+# Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+
+kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+https://localhost:8443
+
+https://github.com/ankitk165/kube-starter-twshubham/blob/main/kubestarter-main/kind-cluster/dashboard-admin-user.yml
+
+kubectl apply -f dashboard-admin-user.yml
+
+kubectl -n kubernetes-dashboard create token admin-user
+
+kubectl proxy
+
+b. using kubectl
+
+https://medium.com/@nikhil.nagarajappa/installing-and-accessing-kubernetes-dashboard-e1b14de3f5db
